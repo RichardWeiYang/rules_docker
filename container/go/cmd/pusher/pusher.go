@@ -155,7 +155,7 @@ func digestExists(dst string, img v1.Image) (bool, error) {
 // Push the given image to destination <dst>.
 func push(dst string, img v1.Image) error {
 	// Push the image to dst.
-	ref, err := name.ParseReference(dst)
+	ref, err := name.ParseReference(dst, []name.Option{name.Insecure}...)
 	if err != nil {
 		return errors.Wrapf(err, "error parsing %q as an image reference", dst)
 	}
